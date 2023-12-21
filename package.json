@@ -1,0 +1,18 @@
+{
+  "name": "tick-tick-pro-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "naim ahmad",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0"
+  }
+}
