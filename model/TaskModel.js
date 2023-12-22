@@ -10,7 +10,6 @@ const taskSchema = new Schema({
   },
   taskDeadLine: {
     type: Date,
-    required: true,
   },
   priority: {
     type: String,
@@ -21,6 +20,13 @@ const taskSchema = new Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: "todo",
+    enum: ["todo", "ongoing", "completed"],
+  },
 });
 
 const Task = model("Task", taskSchema);
+
+module.exports = Task;
