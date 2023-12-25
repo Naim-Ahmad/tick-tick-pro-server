@@ -46,7 +46,7 @@ app.post("/createToken", async (req, res) => {
     .cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "development",
+      sameSite: process.env.NODE_ENV === "development" ? "strict" : "none",
     })
     .send({ message: "Token Created!" });
 });
@@ -115,6 +115,15 @@ app.get("/myTasks", verifyToken, async (req, res) => {
     }
     const indexs = await TaskModel.find(query);
     res.send(indexs);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+app.get("/myTask/:id", async (req, res) => {
+  try {
+    const data = await TaskModel.findById(req.params.id);
+    res.send(data);
   } catch (error) {
     res.status(500).send(error);
   }
